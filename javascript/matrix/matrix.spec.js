@@ -1,7 +1,7 @@
 import { Matrix } from './matrix';
 
 describe('Matrix', () => {
-  xtest('extract row from one number matrix', () => {
+  test('extract row from one number matrix', () => {
     expect(new Matrix('1').rows[0]).toEqual([1]);
   });
 

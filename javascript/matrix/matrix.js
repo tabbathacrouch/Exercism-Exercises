@@ -1,24 +1,29 @@
-//
-// This is only a SKELETON file for the 'Matrix' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+// exercism --> matrix
 
 export class Matrix {
   constructor(string) {
-    this.matrix = string;
+    this.Rows = string.split("\n").map((row) => row.split(" ").map(Number));
   }
 
   get rows() {
-    return this.matrix
-      .split("\n")
-      .map((x) => x.split(" ").map((j) => parseInt(j)));
+    return this.Rows;
   }
 
   get columns() {
-    
-    
-    return this.matrix
-      .split("\n")
-      .map((x) => x.split(" ").map((j) => parseInt(j)));
+    return this.Rows[0].map((col, i) => this.Rows.map((row) => row[i]));
   }
 }
+
+// another way to extract the row
+// return this.Rows
+// .split("\n")
+// .map((x) => x.split(" ").map((i) => parseInt(i)));
+
+// 1st attempt to extract columns
+// let columnArray = [];
+// for (let i = 0; i < this.matrix.length; i++) {
+//   for (let j = 0; j < this.matrix.length; j++) {
+//     columnArray.push(this.matrix[i][j]);
+//   }
+// }
+// return columnArray;
