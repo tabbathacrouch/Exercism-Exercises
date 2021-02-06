@@ -2,7 +2,7 @@
 // The first step of the Luhn algorithm is to double every second digit, starting from the right.
 // If doubling the number results in a number greater than 9 then subtract 9 from the product.
 // Then sum all of the digits.
-// If the sum is evenly divisible by 10 (or equal to 0), then the number is valid.
+// If the sum is evenly divisible by 10, then the number is valid.
 
 // 1st attempt
 export const valid = (identificationNumber) => {
@@ -59,8 +59,8 @@ export const valid = (identificationNumber) => {
   const sum = remainingDigits
     .concat(doubledDigits)
     .reduce((accumulator, currentValue) => accumulator + currentValue);
-  // valid when evenly divisible by 10 (or equal to 0)
-  if (sum % 10 === 0 || sum === 0) {
+  // valid when evenly divisible by 10
+  if (sum % 10 === 0) {
     return true;
   } else {
     return false;
