@@ -32,9 +32,9 @@ export const transpose = (input) => {
     return [];
   }
 
-  const transposedInput = [];
   const maxCol = Math.max(...input.map((x) => x.length));
   const splitInput = input.map((x) => [...x]);
+  const transposedInput = [];
 
   for (let i = 0; i < maxCol; i++) {
     transposedInput.push(
@@ -42,6 +42,8 @@ export const transpose = (input) => {
     );
   }
 
-  transposedInput[transposedInput.length - 1] = transposedInput[transposedInput.length - 1].trimEnd();
+  transposedInput[transposedInput.length - 1] = transposedInput[
+    transposedInput.length - 1
+  ].trimEnd();
   return transposedInput;
 };
