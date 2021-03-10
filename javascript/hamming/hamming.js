@@ -12,15 +12,18 @@
 // The Hamming distance is only defined for sequences of equal length, so an attempt to calculate it between sequences of different lengths should not work. The general handling of this situation (e.g., raising an exception vs returning a special value) may differ between languages.
 
 export const compute = (leftStrand, rightStrand) => {
-  if (!leftStrand.length && rightStrand.length)
+  if (!leftStrand.length && rightStrand.length) {
     throw new Error("left strand must not be empty");
-  if (leftStrand.length && !rightStrand.length)
+  }
+  if (leftStrand.length && !rightStrand.length) {
     throw new Error("right strand must not be empty");
-  if (leftStrand.length !== rightStrand.length)
+  }
+  if (leftStrand.length !== rightStrand.length) {
     throw new Error("left and right strands must be of equal length");
+  }
   return [...leftStrand].reduce(
     (hammingDistance, nucleotide, x) =>
-      hammingDistance + (nucleotide !== rightStrand[x]),
+      hammingDistance + (nucleotide === rightStrand[x] ? 0 : 1),
     0
   );
 };
