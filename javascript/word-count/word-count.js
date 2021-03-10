@@ -21,6 +21,7 @@
 // i: 1
 // fled: 1
 
+// -----1st attempt-----
 export const countWords = (string) => {
   let words = string
     .toLowerCase()
@@ -28,7 +29,6 @@ export const countWords = (string) => {
     .split(/\s/);
   let countObject = {};
   words.forEach((word) => {
-    // test cases: with quotations, alternating word separators not detected as a word
     if (word.includes("'")) {
       word = word.replace(/^'|'$/g, "");
     }
