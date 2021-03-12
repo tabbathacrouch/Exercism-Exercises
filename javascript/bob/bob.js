@@ -1,16 +1,34 @@
 // exercism --> bob
+// Bob is a lackadaisical teenager. In conversation, his responses are very limited.
+// Bob answers 'Sure.' if you ask him a question, such as "How are you?".
+// He answers 'Whoa, chill out!' if you YELL AT HIM (in all capitals).
+// He answers 'Calm down, I know what I'm doing!' if you yell a question at him.
+// He says 'Fine. Be that way!' if you address him without actually saying anything.
+// He answers 'Whatever.' to anything else.
+// Bob's conversational partner is a purist  when it comes to written communication and always follows normal rules regarding sentence punctuation in English.
 
 export const hey = (message) => {
-  if (message === message.toUpperCase() && message.includes("?")) {
+  const hasUpperCaseLetters = /[A-Z]/.test(message);
+  const withoutSpaces = message.replace(/\s/gi, "");
+  const endPunctuation = withoutSpaces.split("").pop();
+  const withoutNumbers = withoutSpaces.replaceAll(/[0-9,]/gi, "");
+  const hasTabs = /\t/.test(message);
+  if (
+    endPunctuation === "?" &&
+    message.toUpperCase() === message &&
+    hasUpperCaseLetters
+  ) {
     return "Calm down, I know what I'm doing!";
-  } else if (message === message.toUpperCase()) {
-    return "Whoa, chill out!";
-  } else if (message.includes("?")) {
+  } else if (endPunctuation === "?") {
     return "Sure.";
-  } else if (message.includes(".") || message.includes("!")) {
+  } else if (
+    withoutNumbers.toUpperCase() === withoutNumbers &&
+    hasUpperCaseLetters
+  ) {
+    return "Whoa, chill out!";
+  } else if (hasTabs || withoutSpaces.length === 0) {
+    return "Fine. Be that way!";
+  } else {
     return "Whatever.";
   }
-  const regex = /[0-9]/g;
-  const found = message.match(regex);
-  console.log("this ran", found);
 };
