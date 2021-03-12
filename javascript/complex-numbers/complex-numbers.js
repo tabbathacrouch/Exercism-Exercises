@@ -17,31 +17,44 @@ export class ComplexNumber {
     return this.b;
   }
 
-  add() {
-    return new ComplexNumber(this.a, this.b);
+  add(n) {
+    this.a += n.real;
+    this.b += n.imag;
+    return this;
   }
 
-  sub() {
-    throw new Error('Remove this statement and implement this function');
+  sub(n) {
+    this.a -= n.real;
+    this.b -= n.imag;
+    return this;
   }
 
-  div() {
-    throw new Error('Remove this statement and implement this function');
+  mul(n) {
+    const real = (this.a * n.real) - (this.b * n.imag);
+		this.b = (this.a * n.imag) + (this.b * n.real);
+    this.a = real;
+		return this;
   }
 
-  mul() {
-    throw new Error('Remove this statement and implement this function');
+  div(n) {
+    const sumSq = (n.real * n.real) + (n.imag * n.imag);
+    const real = ((this.a * n.real) + (this.b * n.imag))/sumSq;
+		this.b = ((this.b * n.real) - (this.a * n.imag))/sumSq;
+		this.a = real;
+		return this;
   }
 
   get abs() {
-    throw new Error('Remove this statement and implement this function');
+    return Math.sqrt((this.a * this.a) + (this.b * this.b));
   }
 
   get conj() {
-    throw new Error('Remove this statement and implement this function');
+    return new ComplexNumber(this.a, this.b ? -this.b: 0)
   }
 
   get exp() {
-    throw new Error('Remove this statement and implement this function');
+    const eulerA = Math.exp(this.a);
+		return new ComplexNumber(eulerA * Math.cos(this.b), eulerA * Math.sin(this.b));
+	
   }
 }
