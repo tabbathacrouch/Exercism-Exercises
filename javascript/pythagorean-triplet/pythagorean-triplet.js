@@ -22,7 +22,9 @@ export function triplets({ minFactor, maxFactor, sum }) {
       if (a > b) {
         break;
       }
-      if (a ** 2 + b ** 2 === c ** 2) tripletArray.push(new Triplet(a, b, c));
+      if (a ** 2 + b ** 2 === c ** 2) {
+        tripletArray.push(new Triplet(a, b, c));
+      }
     }
   }
   return tripletArray;
