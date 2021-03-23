@@ -12,5 +12,5 @@ export const encode = (str) => {
 };
 
 export const decode = (str) => {
-  return str.replace(/(\d+)([ \w])/g, (_, count, char) => char.repeat(count));
+  return str.replace(/(\d+)([\w ])/g, (_, count, char) => char.repeat(count));
 };

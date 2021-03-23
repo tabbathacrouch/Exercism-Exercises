@@ -1,4 +1,4 @@
-// exersism --> resistor-color-duo
+// exercism --> resistor-color-duo
 // If you want to build something using a Raspberry Pi, you'll probably use resistors. For this exercise, you need to know two things about them:
 // Each resistor has a resistance value.
 // Resistors are small - so small in fact that if you printed the resistance value on them, it would be hard to read.

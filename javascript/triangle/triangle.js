@@ -5,7 +5,7 @@
 // (It is sometimes specified as having exactly two sides the same length, but for the purposes of this exercise we'll say at least two.)
 // A scalene triangle has all sides of different lengths.
 
-// ------ 2nd attempt ----- 
+// ------ 2nd attempt -----
 export class Triangle {
   constructor(...sides) {
     this.triangle = sides.sort();

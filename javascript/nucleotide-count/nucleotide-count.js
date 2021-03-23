@@ -10,15 +10,14 @@
 
 export class NucleotideCounts {
   static parse(DNA) {
-    const nucleotideCount = { A:0, C:0, G:0, T:0};
-    for (let nucleotide of DNA){
-      if(nucleotide in nucleotideCount) {
+    const nucleotideCount = { A: 0, C: 0, G: 0, T: 0 };
+    for (let nucleotide of DNA) {
+      if (nucleotide in nucleotideCount) {
         nucleotideCount[nucleotide]++;
-      }
-      else {
-        throw new Error('Invalid nucleotide in strand')
+      } else {
+        throw new Error("Invalid nucleotide in strand");
       }
     }
-    return Object.values(nucleotideCount).join(' ');
+    return Object.values(nucleotideCount).join(" ");
   }
 }

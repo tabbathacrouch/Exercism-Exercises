@@ -6,10 +6,10 @@
 export const sum = (factors, limit) => {
   return [...Array(limit).keys()].reduce(
     (acc, curr) =>
-      acc + (factors.some(factor => curr % factor === 0) ? curr : 0),
+      acc + (factors.some((factor) => curr % factor === 0) ? curr : 0),
     0
-  );};
-
+  );
+};
 
 // -----1st attempt----- (FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory)
 // let sum = [];
