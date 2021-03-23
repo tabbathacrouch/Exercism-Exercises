@@ -9,9 +9,9 @@
 
 export const hey = (message) => {
   const hasUpperCaseLetters = /[A-Z]/.test(message);
-  const withoutSpaces = message.replace(/\s/gi, "");
+  const withoutSpaces = message.replace(/\s/g, "");
   const endPunctuation = withoutSpaces.split("").pop();
-  const withoutNumbers = withoutSpaces.replaceAll(/[0-9,]/gi, "");
+  const withoutNumbers = withoutSpaces.replaceAll(/[0-9,]/g, "");
   const hasTabs = /\t/.test(message);
   if (
     endPunctuation === "?" &&
