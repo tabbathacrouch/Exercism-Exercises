@@ -26,8 +26,8 @@ export class List {
   // helper function for concat()
   flatten(lists) {
     const acc = new List(this.values);
-    for (let i = 0; i < lists.length; i++){
-      acc.append(lists[i])
+    for (let i = 0; i < lists.length; i++) {
+      acc.append(lists[i]);
     }
     return acc;
   }
@@ -35,7 +35,7 @@ export class List {
   // given a series of lists, combine all items in all lists into one flattened list
   concat(list) {
     if (list["values"]) {
-      return this.flatten(list['values']);
+      return this.flatten(list["values"]);
     }
     return new List([...this.values, ...list.values]);
   }
@@ -44,7 +44,7 @@ export class List {
   filter(filterFunction) {
     const filteredList = new List();
     for (let i = 0; i < this.length(); i++) {
-      if(filterFunction(this.values[i])){
+      if (filterFunction(this.values[i])) {
         filteredList.values = [...filteredList.values, this.values[i]];
       }
     }
@@ -54,7 +54,7 @@ export class List {
   // given a function and a list, return the list of the results of applying function(item) on all items
   map(mapFunction) {
     const mappedList = new List();
-    for (let i = 0; i < this.length(); i++){
+    for (let i = 0; i < this.length(); i++) {
       mappedList.values = [...mappedList.values, mapFunction(this.values[i])];
     }
     return mappedList;
@@ -63,6 +63,7 @@ export class List {
   // given a list, return the total number of items within it
   length() {
     let count = 0;
+    // eslint-disable-next-line no-unused-vars
     for (let x in this.values) {
       count++;
     }
@@ -72,8 +73,8 @@ export class List {
   // given a function, a list, and initial accumulator, fold (reduce) each item into the accumulator from the left using function(accumulator, item)
   foldl(foldFunction, initial) {
     let acc = initial;
-    for (let i = 0; i < this.length(); i++){
-      acc =+ foldFunction(acc, this.values[i]);
+    for (let i = 0; i < this.length(); i++) {
+      acc = +foldFunction(acc, this.values[i]);
     }
     return acc;
   }
@@ -81,8 +82,8 @@ export class List {
   // given a function, a list, and an initial accumulator, fold (reduce) each item into the accumulator from the right using function(item, accumulator)
   foldr(foldFunction, initial) {
     let acc = initial;
-    for(let i = this.length() - 1; i > -1; i--){
-      acc =+ foldFunction(acc, this.values[i]);
+    for (let i = this.length() - 1; i > -1; i--) {
+      acc = +foldFunction(acc, this.values[i]);
     }
     return acc;
   }
@@ -90,12 +91,10 @@ export class List {
   // given a function, a list, and an initial accumulator, fold (reduce) each item into the accumulator from the right using function(item, accumulator)
   reverse() {
     const reversedList = new List();
-    for (let i = this.length() - 1; i > -1; i--){
+    for (let i = this.length() - 1; i > -1; i--) {
       reversedList.values = [...reversedList.values, this.values[i]];
     }
     this.values = [...reversedList.values];
     return this;
   }
-
 }
-
