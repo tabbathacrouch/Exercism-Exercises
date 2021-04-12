@@ -24,27 +24,46 @@
 
 export class Cipher {
   static generateRandomKey() {
-    return String.fromCharCode(...[...Array(100)].map(() => Math.floor(Math.random() * 26) + 97));
+    return String.fromCharCode(
+      ...[...Array(100)].map(() => Math.floor(Math.random() * 26) + 97)
+    );
   }
 
   #key;
   #keyShift;
 
   constructor(key = Cipher.generateRandomKey()) {
-    this.#key = key.replace(/[^A-Za-z]/g, '');
-    this.#keyShift = [...this.#key].map(char => char.toLowerCase().charCodeAt(0) - 97);
+    this.#key = key.replace(/[^A-Za-z]/g, "");
+    this.#keyShift = [...this.#key].map(
+      (char) => char.toLowerCase().charCodeAt(0) - 97
+    );
   }
 
   encode([...chars]) {
-    return String.fromCharCode(...chars.map((char, i) =>
-      ((char.charCodeAt(0) - 97) + (this.#keyShift[i % this.#keyShift.length]))
-      % 26 + 97))
+    return String.fromCharCode(
+      ...chars.map(
+        (char, i) =>
+          ((char.charCodeAt(0) -
+            97 +
+            this.#keyShift[i % this.#keyShift.length]) %
+            26) +
+          97
+      )
+    );
   }
 
   decode([...chars]) {
-    return String.fromCharCode(...chars.map((char, i) =>
-      ((char.charCodeAt(0) - 97) - (this.#keyShift[i % this.#keyShift.length]) + 26)
-      % 26 + 97))
+    return String.fromCharCode(
+      ...chars.map(
+        (char, i) =>
+          ((char.charCodeAt(0) -
+            97 -
+            this.#keyShift[i % this.#keyShift.length] +
+            26) %
+            26) +
+          97
+      )
+    );
   }
 
   get key() {

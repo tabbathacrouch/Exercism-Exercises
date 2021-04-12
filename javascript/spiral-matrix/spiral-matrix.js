@@ -49,3 +49,6 @@ export class SpiralMatrix {
     return result;
   }
 }
+
+
+// resource: https://code.likeagirl.io/create-a-nxn-matrix-spiral-with-javascript-955ee18402f7

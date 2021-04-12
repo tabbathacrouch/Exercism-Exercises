@@ -38,6 +38,7 @@
 // 1002 becomes "one thousand and two".
 // 1323 becomes "one thousand three hundred and twenty-three".
 
+// npm install number-to-words 
 const numberToWords = require("number-to-words");
 
 export class Say {

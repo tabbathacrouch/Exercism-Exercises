@@ -74,7 +74,7 @@ export class CustomSet {
     const uniqueSet = this.set
       .flat()
       .filter((e, index, array) => array.indexOf(e) === index)
-      .sort();
+      .sort();6
     return new CustomSet(uniqueSet);
   }
 
