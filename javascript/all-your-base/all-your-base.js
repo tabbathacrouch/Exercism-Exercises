@@ -14,37 +14,29 @@
 // I think you got the idea!
 // Yes. Those three numbers above are exactly the same. Congratulations!
 
-export const convert = (digits, currentBase, newBase) => {
-  let newNumber = [];
-  if (newBase === 2) {
-    let str = "";
-    for (let i = 0; i < digits.length; i++) {
-      str += parseInt(digits[i]);
-    }
-    newNumber.push(str);
-    return newNumber
-      .map(Number)
-      .reduce((_, curr) => curr)
-      .toString(2)
-      .split("")
-      .map(Number);
-  } else {
-    let sum = changeBase(digits, currentBase)
-    if (currentBase === 2) {
-      return sum.toString().split("").map(Number);
-    } else {
-      return sum;
-    }
+export const convert = (digits, oldBase, newBase) => {
+  if (oldBase < 2) {
+    throw new Error("Wrong input base");
   }
+  if (newBase < 2) {
+    throw new Error("Wrong output base");
+  }
+  if (
+    digits.length === 0 ||
+    (digits.length > 1 && digits[0] === 0) ||
+    digits.some((x) => x < 0 || x >= oldBase)
+  ) {
+    throw new Error("Input has wrong format");
+  }
+
+  let sum = digits.reduce((acc, curr) => acc * oldBase + curr);
+  if (sum === 0) {
+    return [0];
+  }
+  let output = [];
+  while (sum !== 0) {
+    output.unshift(sum % newBase);
+    sum = Math.trunc(sum / newBase);
+  }
+  return output;
 };
-
-
-function changeBase(digitsArray, base) {
-  let arr = [];
-  let exponent = digitsArray.length - 1;
-  for (let i = 0; i < digitsArray.length; i++) {
-    arr.push(digitsArray[i] * base ** exponent);
-    exponent--;
-  }
-  return arr.reduce((acc, curr) => acc + curr, 0);
-} 
