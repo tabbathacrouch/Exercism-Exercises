@@ -75,13 +75,18 @@ export const score = (turn, category) => {
       (key) => diceCounts(turn)[key] >= 4
     );
     return Number(dice) * 4;
-  } else if (category === 'little straight' && JSON.stringify(turn) === "[1,2,3,4,5]") {
+  } else if (
+    category === "little straight" &&
+    JSON.stringify(turn) === "[1,2,3,4,5]"
+  ) {
     return 30;
-  }
-  else if (category === 'big straight' && JSON.stringify(turn) === "[2,3,4,5,6]") {
+  } else if (
+    category === "big straight" &&
+    JSON.stringify(turn) === "[2,3,4,5,6]"
+  ) {
     return 30;
-  } else if (category === 'choice'){
-    return turn.reduce((acc, curr) => acc + curr)
+  } else if (category === "choice") {
+    return turn.reduce((acc, curr) => acc + curr);
   }
   return 0;
 };
