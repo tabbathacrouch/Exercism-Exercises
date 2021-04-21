@@ -56,9 +56,10 @@ export class Garden {
 
   plants(student) {
     const studentIndex = this.students.indexOf(student);
-    const studentPlantCodes = this.rows.map(
-      (x) => x[studentIndex * 2] + x[studentIndex * 2 + 1]
-    ).map((x) => x.split("")).flat();
-   return studentPlantCodes.map(x => PLANT_CODES[x]);
+    const studentPlantCodes = this.rows
+      .map((x) => x[studentIndex * 2] + x[studentIndex * 2 + 1])
+      .map((x) => x.split(""))
+      .flat();
+    return studentPlantCodes.map((x) => PLANT_CODES[x]);
   }
 }
